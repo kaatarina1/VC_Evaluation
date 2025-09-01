@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Evaluation Survey</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    
+
+  /* Fullscreen overlay loader */
+  #loaderOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 20px;
+    z-index: 9999;
+    display: none; /* hidden by default */
+  }
+
+  #loaderOverlay .progress {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  #loaderOverlay .spinner {
+    margin-top: 20px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+</style>
+<body class="bg-pink-50 text-gray-900 p-6">
+
+  <div id="loaderOverlay">
+  <div id="waiting">⏳ Please wait, uploading your results...</div>
+  <dix id="finished">✅ Thank you! Your ratings have been submitted.</dix>
+  <div class="spinner" id="spinner"></div>
+  </div>
+
+  <h1 class="font-bold text-2xl mb-4 text-pink-800">Voice Evaluation Survey</h1>
+<!-- Introduction -->
+ <p>Hi, I am <strong>Katarina Gojković</strong>, a student at the Faculty of Computer Science and Informatics at the University of Ljubljana. I am researching the quality of different voice conversion models and software used for real-time voice conversion. By taking this survey, you will help me greatly in my research. Thank you for your time and participation!</p>
+  <p class="mb-6 text-gray-800">You will be evaluating a set of audio recordings. The dataset includes 5 different sentences spoken by male and female speakers in both English and Slovenian (a total of 20 sentences). For each sentence, there are six converted versions of the original speaker's audio.</p>
+
+  <!-- Evaluation Procedure -->
+  <h2 class="text-2xl font-semibold mb-2 text-pink-700">Evaluation Procedure</h2>
+  <ol class="list-decimal list-inside mb-6 space-y-1 text-gray-800">
+    <li>Listen to the reference audio (the original speaker) for the sentence.</li>
+    <li>Then listen to all six converted audio versions of the same sentence.</li>
+    <li>Rate each converted audio on the following criteria:</li>
+  </ol>
+
+  <!-- Rating Criteria -->
+  <h2 class="text-2xl font-semibold mb-2 text-pink-700">Rating Criteria</h2>
+  <ul class="list-disc list-inside mb-4 space-y-1 text-gray-800">
+    <li><strong>Dissimilarity:</strong> How different the converted voice is from the reference voice.</li>
+    <li><strong>Naturalness:</strong> How natural the converted voice sounds.</li>
+    <li><strong>Pronunciation:</strong> How accurate the pronunciation of the converted voice is.</li>
+    <li><strong>Audio Quality:</strong> Overall quality of the audio.</li>
+  </ul>
+  <p class="italic text-gray-600 mb-6">It is recommended to first listen to the reference audio and then all converted versions before rating any of them.</p>
+
+  <!-- Rating Scale -->
+  <h2 class="text-2xl font-semibold mb-2 text-pink-700">Rating Scale</h2>
+  <div class="bg-pink-100 p-4 rounded-lg mb-6 text-gray-800">
+    Ratings are from 0 to 10:
+    <ul class="list-disc list-inside mt-2 space-y-1">
+      <li>0 = Very similar to the reference / Very unnatural / Very inaccurate / Very poor quality</li>
+      <li>10 = Very different from the reference / Very natural / Very accurate / Excellent quality</li>
+    </ul>
+  </div>
+  <!-- Survey sections will be generated here -->
+  <div id="survey-container">
+    <!-- Sections will be dynamically inserted here -->
+  </div>
+
+  <!-- Submit -->
+  <div class="mt-6">
+    <button onclick="submitSurvey()" class="bg-pink-600 text-white px-6 py-3 rounded-lg shadow hover:bg-pink-700 transition-colors text-lg w-full sm:w-auto">
+      Submit Ratings
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
