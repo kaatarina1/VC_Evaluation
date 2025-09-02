@@ -19,6 +19,7 @@ const translations = {
     rating0: "0 = Very similar to the reference / Very unnatural / Very inaccurate / Very poor quality",
     rating10: "10 = Very different from the reference / Very natural / Very accurate / Excellent quality",
     submitButton: "Submit Ratings",
+    generatingWaiting: "⏳ Generating survey, please wait...",
     loaderWaiting: "⏳ Please wait, uploading your results...",
     loaderFinished: "✅ Thank you! Your ratings have been submitted.",
     langLabel: "Language:",
@@ -46,6 +47,7 @@ const translations = {
     rating0: "0 = Zelo podoben referenci / Zelo nenaraven / Zelo netočen / Zelo slaba kakovost",
     rating10: "10 = Zelo drugačen od reference / Zelo naraven / Zelo natančen / Odlična kakovost",
     submitButton: "Pošlji ocene",
+    generatingWaiting: "⏳ Generiram anketo, prosimo počakajte...",
     loaderWaiting: "⏳ Prosimo, počakajte, naložitev vaših rezultatov poteka...",
     loaderFinished: "✅ Hvala! Vaše ocene so bile poslane.",
     langLabel: "Jezik:",
@@ -73,6 +75,7 @@ const translations = {
     rating0: "0 = Veoma slično referenci / Veoma neprirodno / Veoma netačno / Veoma loš kvalitet",
     rating10: "10 = Veoma različito od reference / Veoma prirodno / Veoma tačno / Odličan kvalitet",
     submitButton: "Pošalji ocene",
+    generatingWaiting: "⏳ Anketa se generiše, molimo sačekajte...",
     loaderWaiting: "⏳ Molimo sačekajte, učitavanje vaših rezultata je u toku...",
     loaderFinished: "✅ Hvala! Vaše ocene su poslati.",
     langLabel: "Jezik:",
@@ -119,7 +122,20 @@ setLanguage("en");
       document.getElementById(spanId).textContent = slider.value;
     }
 
-    function generateSurvey() {
+    async function generateSurvey() {
+      const overlay = document.getElementById("loaderOverlay");
+      const surveyLoading = document.getElementById("surveyLoading");
+      const waitingText = document.getElementById("waiting");
+      const finishedText = document.getElementById("finished");
+
+      // Show loader
+      overlay.style.display = "flex";
+      surveyLoading.style.display = "block";
+      waitingText.style.display = "none";
+      finishedText.style.display = "none";
+
+      // Let the browser render the overlay before heavy DOM work
+      await new Promise(r => setTimeout(r, 50));
       const container = document.getElementById('survey-container');
       let sectionIndex = 0;
       
@@ -261,6 +277,9 @@ setLanguage("en");
           if (span) span.textContent = saved;
         }
       });
+          
+      // Hide loader
+      overlay.style.display = "none"
     }
 
   document.addEventListener("input", (e) => {
