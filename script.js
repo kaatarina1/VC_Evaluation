@@ -288,10 +288,19 @@ setLanguage("en");
     }
   });
 
+  function isMobile() {
+  // You can use userAgent or screen width
+  return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 1024;
+}
+
     function submitSurvey() {
       // Collect all form data
+      const mobile = isMobile();
       const formData = {};
-      const inputs = document.querySelectorAll('input[type="range"]');
+       const selector = mobile 
+    ? 'input[type="range"][name*="_mobile"]'   // mobile inputs
+    : 'input[type="range"]:not([name*="_mobile"])'; // desktop inputs
+      const inputs = document.querySelectorAll(selector);
       
       inputs.forEach(input => {
         formData[input.name] = parseInt(input.value);
