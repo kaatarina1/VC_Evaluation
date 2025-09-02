@@ -233,7 +233,7 @@ setLanguage("en");
               
               const modelName = model.replace('_', ' ').toUpperCase();
               const mobileSlidersHtml = config.ratings.map(rating => {
-                const inputName = `${rating.id}_${model}_s${sectionIndex}_mobile`;
+                const inputName = `${rating.id}_${model}_s${sectionIndex}`;
                 const valueId = `${inputName}_value`;
                 return `
                   <div class="flex flex-wrap  items-center space-x-3">
@@ -369,10 +369,12 @@ setLanguage("en");
         const waitingText = document.getElementById("waiting");
         const finishedText = document.getElementById("finished");
         const spinner = document.getElementById("spinner");
+        const surveyLoading = document.getElementById("surveyLoading");
 
         // Show overlay before upload
         overlay.style.display = "flex";
         finishedText.style.display = "none";
+        surveyLoading.style.display = "none";
 
         // One single POST request with the array
         await fetch(GOOGLE_SCRIPT_URL, {
