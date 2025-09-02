@@ -233,7 +233,7 @@ setLanguage("en");
               
               const modelName = model.replace('_', ' ').toUpperCase();
               const mobileSlidersHtml = config.ratings.map(rating => {
-                const inputName = `${rating.id}_${model}_s${sectionIndex}`;
+                const inputName = `${rating.id}_${model}_s${sectionIndex}_mobile`;
                 const valueId = `${inputName}_value`;
                 return `
                   <div class="flex flex-wrap  items-center space-x-3">
@@ -300,7 +300,7 @@ setLanguage("en");
       // Group ratings by section/model
       const groupedData = {};
       Object.keys(formData).forEach(key => {
-        if (key.includes('_mobile')) return; // skip mobile duplicates
+        // if (key.includes('_mobile')) return; // skip mobile duplicates
         
         const parts = key.split('_');
         const rating = parts[0];   // e.g., "dissimilarity"
@@ -345,10 +345,10 @@ setLanguage("en");
               gender: metadata.gender,
               language: metadata.language,
               model: model,
-              dissimilarity: sectionData[model].dissimilarity || 5,
-              naturalness: sectionData[model].naturalness || 5,
-              pronunciation: sectionData[model].pronunciation || 5,
-              audioQuality: sectionData[model].audioQuality || 5
+              dissimilarity: sectionData[model].dissimilarity,
+              naturalness: sectionData[model].naturalness,
+              pronunciation: sectionData[model].pronunciation,
+              audioQuality: sectionData[model].audioQuality
             });
           }
         });
@@ -373,6 +373,7 @@ setLanguage("en");
 
         // Show overlay before upload
         overlay.style.display = "flex";
+        waitingText.style.display = "block";
         finishedText.style.display = "none";
         surveyLoading.style.display = "none";
 
