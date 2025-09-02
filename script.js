@@ -146,7 +146,7 @@ setLanguage("en");
             refDiv.className = 'mb-6';
             refDiv.innerHTML = `
               <p class="mb-1 text-pink-700">Reference voice:</p>
-              <audio controls class="w-64">
+              <audio preload="none" controls class="w-64">
                 <source src="${referenceAudio}" type="audio/wav">
               </audio>
             `;
@@ -193,7 +193,7 @@ setLanguage("en");
               }).join('');
               
               modelCol.innerHTML = `
-                <audio controls class="w-36 mb-4 audio_style">
+                <audio preload="none" controls class="w-36 mb-4 audio_style">
                   <source src="${modelAudio}" type="audio/wav">
                 </audio>
                 <div class="space-y-8 w-full">
@@ -233,7 +233,7 @@ setLanguage("en");
               <div class="${modelIndex % 2 === 0 ? 'bg-pink-50' : ''} p-4 rounded-lg border border-pink-200">
                 <div class="flex justify-center mb-4" style="align-items: center;">
                   <h4 style="margin-right: 15px">${modelIndex + 1}.</h4>
-                  <audio controls class="w-64 audio_style">
+                  <audio preload="none" controls class="w-64 audio_style">
                     <source src="${modelAudio}" type="audio/wav">
                   </audio>
                 </div>
@@ -251,7 +251,19 @@ setLanguage("en");
           });
         });
       });
+
+      document.addEventListener("input", (e) => {
+        if (e.target.type === "range") {
+          localStorage.setItem(e.target.name, e.target.value);
+        }
+      });
     }
+
+  document.addEventListener("input", (e) => {
+    if (e.target.type === "range") {
+      localStorage.setItem(e.target.name, e.target.value);
+    }
+  });
 
     function submitSurvey() {
       // Collect all form data
