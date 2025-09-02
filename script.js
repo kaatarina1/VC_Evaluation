@@ -1,3 +1,103 @@
+const translations = {
+  en: {
+    title: "Voice Evaluation Survey",
+    aboutTitle: "About Me & Project",
+    aboutText: "Hi, I am Katarina Gojković, a student at the Faculty of Computer Science and Informatics at the University of Ljubljana. I am researching the quality of different voice conversion models and software used for real-time voice conversion. By taking this survey, you will help me greatly in my research. Thank you for your time and participation!",
+    intro: "You will be evaluating a set of audio recordings. The dataset includes 5 different sentences spoken by male and female speakers in both English and Slovenian (a total of 20 sentences). For each sentence, there are six converted versions of the original speaker's audio.",
+    evaluationProcedure: "Evaluation Procedure",
+    step1: "Listen to the reference audio (the original speaker) for the sentence.",
+    step2: "Then listen to all six converted audio versions of the same sentence.",
+    step3: "Rate each converted audio on the following criteria:",
+    ratingCriteria: "Rating Criteria",
+    dissimilarity: "Dissimilarity: How different the converted voice is from the reference voice.",
+    naturalness: "Naturalness: How natural the converted voice sounds.",
+    pronunciation: "Pronunciation: How accurate the pronunciation of the converted voice is.",
+    audioQuality: "Audio Quality: Overall quality of the audio.",
+    ratingNote: "It is recommended to first listen to the reference audio and then all converted versions before rating any of them.",
+    ratingScale: "Rating Scale",
+    ratingScaleDesc: "Ratings are from 0 to 10:",
+    rating0: "0 = Very similar to the reference / Very unnatural / Very inaccurate / Very poor quality",
+    rating10: "10 = Very different from the reference / Very natural / Very accurate / Excellent quality",
+    submitButton: "Submit Ratings",
+    loaderWaiting: "⏳ Please wait, uploading your results...",
+    loaderFinished: "✅ Thank you! Your ratings have been submitted.",
+    langLabel: "Language:",
+    langEnglish: "English",
+    langSlovenian: "Slovenian",
+    langSerbian: "Serbian"
+  },
+  sl: {
+    title: "Anketiranje Ocene Glasu",
+    aboutTitle: "O meni in projektu",
+    aboutText: "Pozdravljeni! Sem Katarina Gojković, študentka Fakultete za računalništvo in informatiko na Univerzi v Ljubljani. Raziskujem kakovost različnih modelov in programov za pretvorbo glasu v realnem času. Z izpolnitvijo te ankete mi boste močno pomagali pri raziskavi. Hvala za vaš čas in sodelovanje!",
+    intro: "Ocenjevali boste nabor zvočnih posnetkov. Nabor vključuje 5 različnih stavkov, ki jih govorijo moški in ženski govorci v angleščini in slovenščini (skupaj 20 stavkov). Za vsak stavek obstaja šest pretvorjenih različic izvirnega govorca.",
+    evaluationProcedure: "Postopek ocenjevanja",
+    step1: "Poslušajte referenčni posnetek (izvirni govorec) za stavek.",
+    step2: "Nato poslušajte vseh šest pretvorjenih različic istega stavka.",
+    step3: "Ocenite vsak pretvorjeni posnetek po naslednjih kriterijih:",
+    ratingCriteria: "Kriteriji ocenjevanja",
+    dissimilarity: "Dissimilarity: Kako se pretvorjeni glas razlikuje od referenčnega glasu.",
+    naturalness: "Naturalness: Kako naraven se pretvorjeni glas sliši.",
+    pronunciation: "Pronunciation: Kako natančna je izgovorjava pretvorjenega glasu.",
+    audioQuality: "Audio Quality: Splošna kakovost zvoka.",
+    ratingNote: "Priporočljivo je najprej poslušati referenčni posnetek in nato vse pretvorjene različice, preden ocenite katerikoli posnetek.",
+    ratingScale: "Skala ocenjevanja",
+    ratingScaleDesc: "Ocene so od 0 do 10:",
+    rating0: "0 = Zelo podoben referenci / Zelo nenaraven / Zelo netočen / Zelo slaba kakovost",
+    rating10: "10 = Zelo drugačen od reference / Zelo naraven / Zelo natančen / Odlična kakovost",
+    submitButton: "Pošlji ocene",
+    loaderWaiting: "⏳ Prosimo, počakajte, naložitev vaših rezultatov poteka...",
+    loaderFinished: "✅ Hvala! Vaše ocene so bile poslane.",
+    langLabel: "Jezik:",
+    langEnglish: "Angleščina",
+    langSlovenian: "Slovenščina",
+    langSerbian: "Srbščina"
+  },
+  sr: {
+    title: "Anketiranje Ocene Glasu",
+    aboutTitle: "O meni i projektu",
+    aboutText: "Pozdravljeni! Sem Katarina Gojković, studentkinja Fakulteta za računarstvo i informatiku na Univerzitetu u Ljubljani. Istražujem kvalitet različitih modela i programa za konverziju glasa u realnom vremenu. Popunjavanjem ove ankete značajno ćete mi pomoći u istraživanju. Hvala na vašem vremenu i učešću!",
+    intro: "Ocenjivaćete set audio snimaka. Skup uključuje 5 različitih rečenica koje govore muški i ženski govornici na engleskom i slovenačkom (ukupno 20 rečenica). Za svaku rečenicu postoji šest konvertovanih verzija izvornih snimaka.",
+    evaluationProcedure: "Postupak ocenjivanja",
+    step1: "Slušajte referentni audio (izvorni govornik) za rečenicu.",
+    step2: "Zatim poslušajte svih šest konvertovanih verzija iste rečenice.",
+    step3: "Ocenite svaki konvertovani audio prema sledećim kriterijumima:",
+    ratingCriteria: "Kriterijumi ocenjivanja",
+    dissimilarity: "Dissimilarity: Koliko se konvertovani glas razlikuje od referentnog glasa.",
+    naturalness: "Naturalness: Koliko prirodno zvuči konvertovani glas.",
+    pronunciation: "Pronunciation: Koliko je tačan izgovor konvertovanog glasa.",
+    audioQuality: "Audio Quality: Ukupni kvalitet zvuka.",
+    ratingNote: "Preporučuje se prvo poslušati referentni audio, a zatim sve konvertovane verzije pre ocenjivanja.",
+    ratingScale: "Skala ocenjivanja",
+    ratingScaleDesc: "Ocene su od 0 do 10:",
+    rating0: "0 = Veoma slično referenci / Veoma neprirodno / Veoma netačno / Veoma loš kvalitet",
+    rating10: "10 = Veoma različito od reference / Veoma prirodno / Veoma tačno / Odličan kvalitet",
+    submitButton: "Pošalji ocene",
+    loaderWaiting: "⏳ Molimo sačekajte, učitavanje vaših rezultata je u toku...",
+    loaderFinished: "✅ Hvala! Vaše ocene su poslati.",
+    langLabel: "Jezik:",
+    langEnglish: "Engleski",
+    langSlovenian: "Slovenački",
+    langSerbian: "Srpski"
+  }
+};
+function setLanguage(lang) {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang][key]) {
+      el.innerText = translations[lang][key];
+    }
+  });
+}
+
+// Detect dropdown change
+document.getElementById("langSelect").addEventListener("change", (e) => {
+  setLanguage(e.target.value);
+});
+
+// Optional: default to English
+setLanguage("en");
+
 // Configuration
     const config = {
       genders: ['m', 'f'],
