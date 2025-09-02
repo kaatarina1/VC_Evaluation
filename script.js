@@ -252,9 +252,13 @@ setLanguage("en");
         });
       });
 
-      document.addEventListener("input", (e) => {
-        if (e.target.type === "range") {
-          localStorage.setItem(e.target.name, e.target.value);
+      document.querySelectorAll('input[type="range"]').forEach(input => {
+        const saved = localStorage.getItem(input.name);
+        if (saved !== null) {
+          input.value = saved;
+          const spanId = input.name + "_value";
+          const span = document.getElementById(spanId);
+          if (span) span.textContent = saved;
         }
       });
     }
